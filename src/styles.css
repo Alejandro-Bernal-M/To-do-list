@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: gainsboro;
+}
+
+.to-do-holder {
+  width: 60%;
+  max-width: 500px;
+  height: auto;
+  margin: 50px auto;
+  background: #fff;
+  gap: 0;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.title-to-do {
+  font-weight: bold;
+}
+
+.ul-to-do {
+  padding: 0;
+  margin: 0;
+}
+
+.li-to-do {
+  width: 100%;
+  list-style: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(139, 137, 137);
+  padding: 10px;
+  gap: 10px;
+}
+
+.li-to-do-input {
+  padding: 5px 10px;
+}
+
+.text-li {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.li-description {
+  width: 60%;
+}
+
+.refresh {
+  position: relative;
+  left: 34%;
+  width: 21px;
+  height: 19px;
+}
+
+.enter {
+  position: relative;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+}
+
+.icon {
+  position: relative;
+  left: 27%;
+}
+
+.btn-holder {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  border: none;
+  color: rgb(139, 137, 137);
+  font-family: sans-serif;
+  font-size: 15px;
+}
