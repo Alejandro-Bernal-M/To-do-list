@@ -33,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(139, 137, 137);
-  padding: 10px;
+  padding: 1px 10px;
   gap: 10px;
 }
 
@@ -55,6 +55,10 @@ body {
   border: none;
 }
 
+.task-text {
+  border: 1px solid transparent;
+}
+
 .refresh {
   position: relative;
   left: 34%;
@@ -72,6 +76,9 @@ body {
 .icon {
   position: relative;
   left: 27%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .btn-holder {
