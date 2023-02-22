@@ -51,6 +51,8 @@ body {
 
 .li-description {
   width: 60%;
+  height: 100%;
+  border: none;
 }
 
 .refresh {
