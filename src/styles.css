@@ -50,7 +50,7 @@ body {
 }
 
 .li-description {
-  width: 60%;
+  width: 87%;
   height: 100%;
   border: none;
 }
@@ -61,7 +61,7 @@ body {
 
 .refresh {
   position: relative;
-  left: 34%;
+  left: 7%;
   width: 21px;
   height: 19px;
 }
@@ -75,7 +75,7 @@ body {
 
 .icon {
   position: relative;
-  left: 27%;
+  left: 1%;
   width: 24px;
   height: 24px;
   cursor: pointer;

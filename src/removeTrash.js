@@ -5,12 +5,4 @@ export default () => {
   trash.onclick = () => {
     remove(trash.previousSibling.value);
   }
-  // const icons = document.querySelectorAll('.icon');
-  // icons.forEach((icon) => {
-  //   icon.addEventListener('click', () => {
-  //     if (icon.classList.contains('trash-can') === true) {
-  //       remove(icon.previousSibling.value);
-  //     }
-  //   })
-  // })
 }

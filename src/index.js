@@ -5,6 +5,7 @@ import enter from './icons/enter.png';
 import trash from './icons/trash.png';
 import { addTask } from './add.js';
 import removeTrash from './removeTrash.js';
+import editTask from './editTask.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
@@ -25,6 +26,10 @@ function changeIcon() {
       task.parentNode.style.backgroundColor = 'rgb(240, 233, 166)';
       removeTrash();
     });
+    const currentValue = task.value;
+    task.addEventListener('change', () => {
+      editTask(currentValue, task.value);
+    });
   });
   tasksItems.forEach((item) => {
     item.addEventListener('mouseleave', () => {
@@ -37,7 +42,7 @@ function changeIcon() {
 }
 
 function listConstructor() {
-  if(localStorage.getItem('tasks') === '' ) {
+  if(localStorage.getItem('tasks') === '') {
     localStorage.setItem('tasks', '[]')
   }
   const toConstruct = JSON.parse(localStorage.getItem('tasks'));
