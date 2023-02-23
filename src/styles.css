@@ -93,3 +93,9 @@ body {
   font-family: sans-serif;
   font-size: 15px;
 }
+
+.btn-holder:active {
+  transform: translateX(-1px);
+  transform: translateY(1px);
+  box-shadow: 0px 0px 5px black;
+}
