@@ -15,10 +15,13 @@ body {
   gap: 0;
   font-family: sans-serif;
   font-size: 15px;
+  border-radius: 6px;
 }
 
 .title-to-do {
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .ul-to-do {
@@ -89,4 +92,10 @@ body {
   color: rgb(139, 137, 137);
   font-family: sans-serif;
   font-size: 15px;
+}
+
+.btn-holder:active {
+  transform: translateX(-1px);
+  transform: translateY(1px);
+  box-shadow: 0 0 5px black;
 }
