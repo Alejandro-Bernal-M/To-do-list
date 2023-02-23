@@ -42,7 +42,7 @@ function changeIcon() {
 }
 
 function listConstructor() {
-  if (localStorage.getItem('tasks') === '') {
+  if (localStorage.getItem('tasks') === '' || localStorage.getItem('tasks') === null) {
     localStorage.setItem('tasks', '[]');
   }
   const toConstruct = JSON.parse(localStorage.getItem('tasks'));
@@ -75,4 +75,10 @@ inputAdd.onchange = () => {
   addTask(inputAdd.value);
   inputAdd.value = '';
   listConstructor();
+};
+
+window.onload = () => {
+  if (localStorage.getItem('tasks') === null) {
+    localStorage.setItem('tasks', '[]');
+  }
 };
