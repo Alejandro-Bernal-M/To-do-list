@@ -3,7 +3,7 @@ import dots from './icons/dots.png';
 import refresh from './icons/refresh.png';
 import enter from './icons/enter.png';
 import trash from './icons/trash.png';
-import { addTask } from './add.js';
+import addTask from './add.js';
 import removeTrash from './removeTrash.js';
 import editTask from './editTask.js';
 
@@ -37,13 +37,13 @@ function changeIcon() {
       item.lastChild.classList.remove('trash-can');
       item.style.backgroundColor = '#fff';
       item.childNodes[1].style.backgroundColor = '#fff';
-    })
+    });
   });
 }
 
 function listConstructor() {
-  if(localStorage.getItem('tasks') === '') {
-    localStorage.setItem('tasks', '[]')
+  if (localStorage.getItem('tasks') === '') {
+    localStorage.setItem('tasks', '[]');
   }
   const toConstruct = JSON.parse(localStorage.getItem('tasks'));
   toConstruct.sort((x, y) => x.index - y.index);
@@ -62,9 +62,9 @@ listConstructor();
 
 function deletePrevious() {
   const children = holder.childNodes;
-  let counter = children.length
+  const counter = children.length;
   for (let i = 5; i < counter; i += 1) {
-    if(children.length > 4) {
+    if (children.length > 4) {
       holder.removeChild(children[5]);
     }
   }
@@ -75,4 +75,4 @@ inputAdd.onchange = () => {
   addTask(inputAdd.value);
   inputAdd.value = '';
   listConstructor();
-}
+};
