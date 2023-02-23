@@ -15,10 +15,13 @@ body {
   gap: 0;
   font-family: sans-serif;
   font-size: 15px;
+  border-radius: 6px;
 }
 
 .title-to-do {
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .ul-to-do {

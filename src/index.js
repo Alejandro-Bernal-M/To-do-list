@@ -6,11 +6,14 @@ import trash from './icons/trash.png';
 import addTask from './add.js';
 import removeTrash from './removeTrash.js';
 import editTask from './editTask.js';
+import check from './check.js';
+import clearAllCompleted from './clearAllCompleted.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
 const enterIcon = document.querySelector('.enter');
 const holder = document.querySelector('.ul-to-do');
+const buttonClear = document.querySelector('.btn-holder');
 
 refreshIcon.src = refresh;
 enterIcon.src = enter;
@@ -51,11 +54,16 @@ function listConstructor() {
     const newLi = document.createElement('li');
     newLi.classList.add('li-to-do');
     newLi.classList.add('task-item');
-    newLi.innerHTML = `<input type="checkbox" class="checkbox"><input type="text" class="li-description task-text" value ="${item.description}"><img src="${dots}" class="icon">`;
+    let compOrNot = 'none'
+    if (item.completed === true) {
+      compOrNot = 'line-through';
+    } 
+    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
     holder.appendChild(newLi);
   });
 
   changeIcon();
+  check();
 }
 
 listConstructor();
@@ -82,3 +90,8 @@ window.onload = () => {
     localStorage.setItem('tasks', '[]');
   }
 };
+
+buttonClear.onclick = () => {
+  clearAllCompleted();
+  //listConstructor()
+}
