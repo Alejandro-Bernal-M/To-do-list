@@ -1,4 +1,4 @@
-import remove from "./remove.js";
+import remove from './remove.js';
 
 export default () => {
   const checkboxs = document.querySelectorAll('.checkbox');
@@ -7,5 +7,5 @@ export default () => {
       remove(box.nextSibling.value);
       box.parentElement.remove();
     }
-  })
-}
+  });
+};

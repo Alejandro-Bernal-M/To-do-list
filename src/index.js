@@ -54,10 +54,10 @@ function listConstructor() {
     const newLi = document.createElement('li');
     newLi.classList.add('li-to-do');
     newLi.classList.add('task-item');
-    let compOrNot = 'none'
+    let compOrNot = 'none';
     if (item.completed === true) {
       compOrNot = 'line-through';
-    } 
+    }
     newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
     holder.appendChild(newLi);
   });
@@ -93,5 +93,5 @@ window.onload = () => {
 
 buttonClear.onclick = () => {
   clearAllCompleted();
-  //listConstructor()
-}
+  // listConstructor()
+};
