@@ -8,6 +8,7 @@ import removeTrash from './removeTrash.js';
 import editTask from './editTask.js';
 import check from './check.js';
 import clearAllCompleted from './clearAllCompleted.js';
+import dragging from './dragging.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
@@ -58,12 +59,13 @@ function listConstructor() {
     if (item.completed === true) {
       compOrNot = 'line-through';
     }
-    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
+    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon toDrag">`;
     holder.appendChild(newLi);
   });
 
   changeIcon();
   check();
+  dragging();
 }
 
 listConstructor();
