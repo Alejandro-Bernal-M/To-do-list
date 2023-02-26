@@ -65,10 +65,11 @@ function listConstructor() {
 
   changeIcon();
   check();
-  dragging();
-}
+  if (localStorage.getItem('tasks') !== '[]' ){
+    dragging();
+  }
 
-listConstructor();
+}
 
 function deletePrevious() {
   const children = holder.childNodes;
@@ -80,17 +81,20 @@ function deletePrevious() {
   }
 }
 
-inputAdd.onchange = () => {
-  deletePrevious();
-  addTask(inputAdd.value);
-  inputAdd.value = '';
-  listConstructor();
-};
+inputAdd.addEventListener('keypress', (e) => {
+  if( e.key === 'Enter') {
+    deletePrevious();
+    addTask(inputAdd.value);
+    inputAdd.value = '';
+    listConstructor();
+  }
+});
 
 window.onload = () => {
   if (localStorage.getItem('tasks') === null) {
     localStorage.setItem('tasks', '[]');
   }
+  listConstructor();
 };
 
 buttonClear.onclick = () => {

@@ -3,13 +3,9 @@ function Task(description) {
   this.completed = false;
 }
 
-let tasks = [
-
-];
-
 export default function addTask(description) {
   const newTask = new Task(description);
-  tasks = JSON.parse(localStorage.getItem('tasks'));
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
   tasks.push(newTask);
   let index = 1;
   tasks.forEach((item) => {
