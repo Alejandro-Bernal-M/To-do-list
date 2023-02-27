@@ -65,13 +65,15 @@ function listConstructor() {
 
   changeIcon();
   check();
-  const icons = document.querySelectorAll('.icon:not(.trash-can)');
+  const icons = document.querySelectorAll('.icon');
   icons.forEach((icon) => {
     icon.addEventListener('mousedown', () => {
       icon.draggable = false;
-      dragging(icon.parentNode);
-    })
-  })
+      if (icon.classList.contains('trash-can') === false) {
+        dragging(icon.parentNode);
+      }
+    });
+  });
 }
 
 listConstructor();
