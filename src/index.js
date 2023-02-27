@@ -8,6 +8,7 @@ import removeTrash from './modules/removeTrash.js';
 import editTask from './modules/editTask.js';
 import check from './modules/check.js';
 import clearAllCompleted from './modules/clearAllCompleted.js';
+import dragging from './modules/dragging.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
@@ -64,6 +65,15 @@ function listConstructor() {
 
   changeIcon();
   check();
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach((icon) => {
+    icon.addEventListener('mousedown', () => {
+      icon.draggable = false;
+      if (icon.classList.contains('trash-can') === false) {
+        dragging(icon.parentNode);
+      }
+    });
+  });
 }
 
 listConstructor();
@@ -93,5 +103,4 @@ window.onload = () => {
 
 buttonClear.onclick = () => {
   clearAllCompleted();
-  // listConstructor()
 };
