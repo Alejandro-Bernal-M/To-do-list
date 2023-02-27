@@ -1,28 +1,8 @@
-function NewObject(description, completed, index) {
-  this.description = description;
-  this.completed = completed;
-  this.index = index;
-}
-function refresh() {
-  const data = JSON.parse(localStorage.getItem('tasks'));
-  const tasks = document.querySelectorAll('.task-item');
-  const newData = [];
-  let index = 1;
-
-  tasks.forEach((task) => {
-    for (let i = 0; i < data.length; i += 1) {
-      if (task.childNodes[1].value === data[i].description) {
-        const orderTask = new NewObject(data[i].description, task.childNodes[0].checked, index);
-        newData.push(orderTask);
-        index += 1;
-      }
-    }
-  });
-  localStorage.setItem('tasks', (JSON.stringify(newData)));
-}
+import refresh from "./refresh.js";
 
 export default () => {
-  const draggables = document.querySelectorAll('.toDrag:not(.trash-can)');
+  let draggables = document.querySelectorAll('.toDrag:not(.trash-can)');
+  let items = document.querySelectorAll('.task-item');
   const holder = document.querySelector('.ul-to-do');
   let dragged;
   draggables.forEach((button) => {
@@ -48,7 +28,6 @@ export default () => {
   holder.addEventListener('dragover', (e) => {
     e.preventDefault();
     let lastMousePosition;
-    const items = document.querySelectorAll('.task-item');
     const arrOfPositions = [];
     items.forEach((item) => {
       arrOfPositions.push(item.getBoundingClientRect().y);
@@ -59,15 +38,13 @@ export default () => {
       holder.appendChild(dragged)
     } else {
       holder.insertBefore(dragged, items[where]);
-    }
-    
-    console.log(dragged)
-    console.log(where)
-    console.log(items)
+    }   
   });
   holder.addEventListener('drop', (event) => {
     event.preventDefault();
+    dragged=null;
     refresh();
+    items = document.querySelectorAll('.task-item');
   });
   
 };

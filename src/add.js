@@ -1,17 +1,13 @@
-function Task(description) {
-  this.description = description;
-  this.completed = false;
-}
+import {dots} from './index.js'
+import refresh from './refresh.js';
+
+const holder = document.querySelector('.ul-to-do');
 
 export default function addTask(description) {
-  const newTask = new Task(description);
-  const tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks.push(newTask);
-  let index = 1;
-  tasks.forEach((item) => {
-    item.index = index;
-    index += 1;
-  });
-  const toStore = JSON.stringify(tasks);
-  localStorage.setItem('tasks', toStore);
+  const newLi = document.createElement('li');
+  newLi.classList.add('li-to-do');
+  newLi.classList.add('task-item');
+  newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" value ="${description}"><img src="${dots}" class="icon toDrag">`;
+  holder.appendChild(newLi);
+  refresh();
 }

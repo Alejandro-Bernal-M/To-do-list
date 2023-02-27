@@ -16,6 +16,8 @@ const enterIcon = document.querySelector('.enter');
 const holder = document.querySelector('.ul-to-do');
 const buttonClear = document.querySelector('.btn-holder');
 
+export {dots}
+
 refreshIcon.src = refresh;
 enterIcon.src = enter;
 
@@ -68,26 +70,14 @@ function listConstructor() {
   if (localStorage.getItem('tasks') !== '[]' ){
     dragging();
   }
-
-}
-
-function deletePrevious() {
-  const children = holder.childNodes;
-  const counter = children.length;
-  for (let i = 5; i < counter; i += 1) {
-    if (children.length > 4) {
-      holder.removeChild(children[5]);
-    }
-  }
 }
 
 inputAdd.addEventListener('keypress', (e) => {
   if( e.key === 'Enter') {
-    deletePrevious();
     addTask(inputAdd.value);
     inputAdd.value = '';
-    listConstructor();
   }
+  
 });
 
 window.onload = () => {
@@ -99,5 +89,4 @@ window.onload = () => {
 
 buttonClear.onclick = () => {
   clearAllCompleted();
-  // listConstructor()
 };
