@@ -3,11 +3,11 @@ import dots from './icons/dots.png';
 import refresh from './icons/refresh.png';
 import enter from './icons/enter.png';
 import trash from './icons/trash.png';
-import addTask from './add.js';
-import removeTrash from './removeTrash.js';
-import editTask from './editTask.js';
-import check from './check.js';
-import clearAllCompleted from './clearAllCompleted.js';
+import addTask from './modules/add.js';
+import removeTrash from './modules/removeTrash.js';
+import editTask from './modules/editTask.js';
+import check from './modules/check.js';
+import clearAllCompleted from './modules/clearAllCompleted.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
