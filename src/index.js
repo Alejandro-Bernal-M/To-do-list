@@ -15,8 +15,8 @@ const refreshIcon = document.querySelector('.refresh');
 const enterIcon = document.querySelector('.enter');
 const holder = document.querySelector('.ul-to-do');
 const buttonClear = document.querySelector('.btn-holder');
-
-export {dots}
+let  test;
+export {dots, test}
 
 refreshIcon.src = refresh;
 enterIcon.src = enter;
@@ -67,6 +67,7 @@ function listConstructor() {
 
   changeIcon();
   check();
+  test = 1;
   if (localStorage.getItem('tasks') !== '[]' ){
     dragging();
   }
@@ -77,7 +78,9 @@ inputAdd.addEventListener('keypress', (e) => {
     addTask(inputAdd.value);
     inputAdd.value = '';
   }
-  
+  test = 0;
+  dragging()
+  //test = 1;
 });
 
 window.onload = () => {

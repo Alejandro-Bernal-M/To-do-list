@@ -1,11 +1,18 @@
 import refresh from "./refresh.js";
+import { test } from "./index.js";
 
 export default () => {
+  if( test === 0){
+    return;
+  }
   let draggables = document.querySelectorAll('.toDrag:not(.trash-can)');
   let items = document.querySelectorAll('.task-item');
   const holder = document.querySelector('.ul-to-do');
   let dragged;
   draggables.forEach((button) => {
+    if( test === 0){
+      return;
+    }
     button.addEventListener('mousedown', () => {
       button.parentElement.classList.add('dragging')
       button.draggable = false;
@@ -45,6 +52,7 @@ export default () => {
     dragged=null;
     refresh();
     items = document.querySelectorAll('.task-item');
+    console.log(test)
   });
   
 };
