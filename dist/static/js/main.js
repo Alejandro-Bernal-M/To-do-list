@@ -109,73 +109,83 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/add.js":
-/*!********************!*\
-  !*** ./src/add.js ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addTask)\n/* harmony export */ });\nfunction Task(description) {\r\n  this.description = description;\r\n  this.completed = false;\r\n}\r\n\r\nlet tasks = [\r\n\r\n];\r\n\r\nfunction addTask(description) {\r\n  const newTask = new Task(description);\r\n  tasks = JSON.parse(localStorage.getItem('tasks'));\r\n  tasks.push(newTask);\r\n  let index = 1;\r\n  tasks.forEach((item) => {\r\n    item.index = index;\r\n    index += 1;\r\n  });\r\n  const toStore = JSON.stringify(tasks);\r\n  localStorage.setItem('tasks', toStore);\r\n}\r\n\n\n//# sourceURL=webpack://to-do-list/./src/add.js?");
-
-/***/ }),
-
-/***/ "./src/check.js":
-/*!**********************!*\
-  !*** ./src/check.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction changeStatus(description, status) {\r\n  const tasks = JSON.parse(localStorage.getItem('tasks'));\r\n  tasks.forEach((task) => {\r\n    if (task.description === description) {\r\n      task.completed = status;\r\n    }\r\n  });\r\n  const toStore = JSON.stringify(tasks);\r\n  localStorage.setItem('tasks', toStore);\r\n}\r\n\r\nfunction checkTrue() {\r\n  const checkboxs = document.querySelectorAll('.checkbox');\r\n  checkboxs.forEach((box) => {\r\n    if (box.nextElementSibling.style.textDecoration === 'line-through') {\r\n      box.checked = true;\r\n    }\r\n  });\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\r\n  const checkboxs = document.querySelectorAll('.checkbox');\r\n  checkboxs.forEach((checkbox) => {\r\n    checkbox.addEventListener('click', () => {\r\n      const check = checkbox.checked;\r\n      if (check === true) {\r\n        checkbox.nextSibling.style.textDecoration = 'line-through';\r\n        changeStatus(checkbox.nextSibling.value, check);\r\n      } else {\r\n        checkbox.nextSibling.style.textDecoration = 'none';\r\n        changeStatus(checkbox.nextSibling.value, check);\r\n      }\r\n    });\r\n  });\r\n  checkTrue();\r\n});\r\n\n\n//# sourceURL=webpack://to-do-list/./src/check.js?");
-
-/***/ }),
-
-/***/ "./src/clearAllCompleted.js":
-/*!**********************************!*\
-  !*** ./src/clearAllCompleted.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./remove.js */ \"./src/remove.js\");\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\r\n  const checkboxs = document.querySelectorAll('.checkbox');\r\n  const arr = Array.from(checkboxs);\r\n  const checkboxCheck = arr.filter((check) => check.checked === true);\r\n  checkboxCheck.forEach((cheked) => {\r\n    (0,_remove_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(cheked.nextSibling.value);\r\n    cheked.parentElement.remove();\r\n  });\r\n});\n\n//# sourceURL=webpack://to-do-list/./src/clearAllCompleted.js?");
-
-/***/ }),
-
-/***/ "./src/editTask.js":
-/*!*************************!*\
-  !*** ./src/editTask.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((description, newDescription) => {\r\n  const toModify = JSON.parse(localStorage.getItem('tasks'));\r\n  toModify.forEach((element) => {\r\n    if (element.description === description) {\r\n      element.description = newDescription;\r\n    }\r\n  });\r\n  const toStorage = JSON.stringify(toModify);\r\n  localStorage.setItem('tasks', toStorage);\r\n});\n\n//# sourceURL=webpack://to-do-list/./src/editTask.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _icons_dots_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icons/dots.png */ \"./src/icons/dots.png\");\n/* harmony import */ var _icons_refresh_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./icons/refresh.png */ \"./src/icons/refresh.png\");\n/* harmony import */ var _icons_enter_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icons/enter.png */ \"./src/icons/enter.png\");\n/* harmony import */ var _icons_trash_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./icons/trash.png */ \"./src/icons/trash.png\");\n/* harmony import */ var _add_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./add.js */ \"./src/add.js\");\n/* harmony import */ var _removeTrash_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./removeTrash.js */ \"./src/removeTrash.js\");\n/* harmony import */ var _editTask_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editTask.js */ \"./src/editTask.js\");\n/* harmony import */ var _check_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./check.js */ \"./src/check.js\");\n/* harmony import */ var _clearAllCompleted_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./clearAllCompleted.js */ \"./src/clearAllCompleted.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst inputAdd = document.getElementById('add-text');\r\nconst refreshIcon = document.querySelector('.refresh');\r\nconst enterIcon = document.querySelector('.enter');\r\nconst holder = document.querySelector('.ul-to-do');\r\nconst buttonClear = document.querySelector('.btn-holder');\r\n\r\nrefreshIcon.src = _icons_refresh_png__WEBPACK_IMPORTED_MODULE_2__;\r\nenterIcon.src = _icons_enter_png__WEBPACK_IMPORTED_MODULE_3__;\r\n\r\nfunction changeIcon() {\r\n  const tasksItems = document.querySelectorAll('.task-item');\r\n  const taskText = document.querySelectorAll('.task-text');\r\n  taskText.forEach((task) => {\r\n    task.addEventListener('click', () => {\r\n      task.nextSibling.src = _icons_trash_png__WEBPACK_IMPORTED_MODULE_4__;\r\n      task.nextSibling.classList.add('trash-can');\r\n      task.style.backgroundColor = 'rgb(240, 233, 166)';\r\n      task.parentNode.style.backgroundColor = 'rgb(240, 233, 166)';\r\n      (0,_removeTrash_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\r\n    });\r\n    const currentValue = task.value;\r\n    task.addEventListener('change', () => {\r\n      (0,_editTask_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"])(currentValue, task.value);\r\n    });\r\n  });\r\n  tasksItems.forEach((item) => {\r\n    item.addEventListener('mouseleave', () => {\r\n      item.lastChild.src = _icons_dots_png__WEBPACK_IMPORTED_MODULE_1__;\r\n      item.lastChild.classList.remove('trash-can');\r\n      item.style.backgroundColor = '#fff';\r\n      item.childNodes[1].style.backgroundColor = '#fff';\r\n    });\r\n  });\r\n}\r\n\r\nfunction listConstructor() {\r\n  if (localStorage.getItem('tasks') === '' || localStorage.getItem('tasks') === null) {\r\n    localStorage.setItem('tasks', '[]');\r\n  }\r\n  const toConstruct = JSON.parse(localStorage.getItem('tasks'));\r\n  toConstruct.sort((x, y) => x.index - y.index);\r\n  toConstruct.forEach((item) => {\r\n    const newLi = document.createElement('li');\r\n    newLi.classList.add('li-to-do');\r\n    newLi.classList.add('task-item');\r\n    let compOrNot = 'none';\r\n    if (item.completed === true) {\r\n      compOrNot = 'line-through';\r\n    }\r\n    newLi.innerHTML = `<input type=\"checkbox\"  class=\"checkbox\"><input type=\"text\" class=\"li-description task-text\" style=\"text-decoration: ${compOrNot}\" value =\"${item.description}\"><img src=\"${_icons_dots_png__WEBPACK_IMPORTED_MODULE_1__}\" class=\"icon\">`;\r\n    holder.appendChild(newLi);\r\n  });\r\n\r\n  changeIcon();\r\n  (0,_check_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"])();\r\n}\r\n\r\nlistConstructor();\r\n\r\nfunction deletePrevious() {\r\n  const children = holder.childNodes;\r\n  const counter = children.length;\r\n  for (let i = 5; i < counter; i += 1) {\r\n    if (children.length > 4) {\r\n      holder.removeChild(children[5]);\r\n    }\r\n  }\r\n}\r\n\r\ninputAdd.onchange = () => {\r\n  deletePrevious();\r\n  (0,_add_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"])(inputAdd.value);\r\n  inputAdd.value = '';\r\n  listConstructor();\r\n};\r\n\r\nwindow.onload = () => {\r\n  if (localStorage.getItem('tasks') === null) {\r\n    localStorage.setItem('tasks', '[]');\r\n  }\r\n};\r\n\r\nbuttonClear.onclick = () => {\r\n  (0,_clearAllCompleted_js__WEBPACK_IMPORTED_MODULE_9__[\"default\"])();\r\n  // listConstructor()\r\n};\r\n\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _icons_dots_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icons/dots.png */ \"./src/icons/dots.png\");\n/* harmony import */ var _icons_refresh_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./icons/refresh.png */ \"./src/icons/refresh.png\");\n/* harmony import */ var _icons_enter_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icons/enter.png */ \"./src/icons/enter.png\");\n/* harmony import */ var _icons_trash_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./icons/trash.png */ \"./src/icons/trash.png\");\n/* harmony import */ var _modules_add_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/add.js */ \"./src/modules/add.js\");\n/* harmony import */ var _modules_removeTrash_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/removeTrash.js */ \"./src/modules/removeTrash.js\");\n/* harmony import */ var _modules_editTask_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/editTask.js */ \"./src/modules/editTask.js\");\n/* harmony import */ var _modules_check_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/check.js */ \"./src/modules/check.js\");\n/* harmony import */ var _modules_clearAllCompleted_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/clearAllCompleted.js */ \"./src/modules/clearAllCompleted.js\");\n/* harmony import */ var _modules_dragging_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/dragging.js */ \"./src/modules/dragging.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst inputAdd = document.getElementById('add-text');\r\nconst refreshIcon = document.querySelector('.refresh');\r\nconst enterIcon = document.querySelector('.enter');\r\nconst holder = document.querySelector('.ul-to-do');\r\nconst buttonClear = document.querySelector('.btn-holder');\r\n\r\nrefreshIcon.src = _icons_refresh_png__WEBPACK_IMPORTED_MODULE_2__;\r\nenterIcon.src = _icons_enter_png__WEBPACK_IMPORTED_MODULE_3__;\r\n\r\nfunction changeIcon() {\r\n  const tasksItems = document.querySelectorAll('.task-item');\r\n  const taskText = document.querySelectorAll('.task-text');\r\n  taskText.forEach((task) => {\r\n    task.addEventListener('click', () => {\r\n      task.nextSibling.src = _icons_trash_png__WEBPACK_IMPORTED_MODULE_4__;\r\n      task.nextSibling.classList.add('trash-can');\r\n      task.style.backgroundColor = 'rgb(240, 233, 166)';\r\n      task.parentNode.style.backgroundColor = 'rgb(240, 233, 166)';\r\n      (0,_modules_removeTrash_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\r\n    });\r\n    const currentValue = task.value;\r\n    task.addEventListener('change', () => {\r\n      (0,_modules_editTask_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"])(currentValue, task.value);\r\n    });\r\n  });\r\n  tasksItems.forEach((item) => {\r\n    item.addEventListener('mouseleave', () => {\r\n      item.lastChild.src = _icons_dots_png__WEBPACK_IMPORTED_MODULE_1__;\r\n      item.lastChild.classList.remove('trash-can');\r\n      item.style.backgroundColor = '#fff';\r\n      item.childNodes[1].style.backgroundColor = '#fff';\r\n    });\r\n  });\r\n}\r\n\r\nfunction listConstructor() {\r\n  if (localStorage.getItem('tasks') === '' || localStorage.getItem('tasks') === null) {\r\n    localStorage.setItem('tasks', '[]');\r\n  }\r\n  const toConstruct = JSON.parse(localStorage.getItem('tasks'));\r\n  toConstruct.sort((x, y) => x.index - y.index);\r\n  toConstruct.forEach((item) => {\r\n    const newLi = document.createElement('li');\r\n    newLi.classList.add('li-to-do');\r\n    newLi.classList.add('task-item');\r\n    let compOrNot = 'none';\r\n    if (item.completed === true) {\r\n      compOrNot = 'line-through';\r\n    }\r\n    newLi.innerHTML = `<input type=\"checkbox\"  class=\"checkbox\"><input type=\"text\" class=\"li-description task-text\" style=\"text-decoration: ${compOrNot}\" value =\"${item.description}\"><img src=\"${_icons_dots_png__WEBPACK_IMPORTED_MODULE_1__}\" class=\"icon\">`;\r\n    holder.appendChild(newLi);\r\n  });\r\n\r\n  changeIcon();\r\n  (0,_modules_check_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"])();\r\n  const icons = document.querySelectorAll('.icon');\r\n  icons.forEach((icon) => {\r\n    icon.addEventListener('mousedown', () => {\r\n      icon.draggable = false;\r\n      if (icon.classList.contains('trash-can') === false) {\r\n        (0,_modules_dragging_js__WEBPACK_IMPORTED_MODULE_10__[\"default\"])(icon.parentNode);\r\n      }\r\n    });\r\n  });\r\n}\r\n\r\nlistConstructor();\r\n\r\nfunction deletePrevious() {\r\n  const children = holder.childNodes;\r\n  const counter = children.length;\r\n  for (let i = 5; i < counter; i += 1) {\r\n    if (children.length > 4) {\r\n      holder.removeChild(children[5]);\r\n    }\r\n  }\r\n}\r\n\r\ninputAdd.onchange = () => {\r\n  deletePrevious();\r\n  (0,_modules_add_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"])(inputAdd.value);\r\n  inputAdd.value = '';\r\n  listConstructor();\r\n};\r\n\r\nwindow.onload = () => {\r\n  if (localStorage.getItem('tasks') === null) {\r\n    localStorage.setItem('tasks', '[]');\r\n  }\r\n};\r\n\r\nbuttonClear.onclick = () => {\r\n  (0,_modules_clearAllCompleted_js__WEBPACK_IMPORTED_MODULE_9__[\"default\"])();\r\n};\r\n\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/remove.js":
-/*!***********************!*\
-  !*** ./src/remove.js ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((description) => {\r\n  const toModify = JSON.parse(localStorage.getItem('tasks'));\r\n  let ind;\r\n  toModify.forEach((element) => {\r\n    if (element.description === description) {\r\n      ind = element.index;\r\n    }\r\n  });\r\n  toModify.splice(ind - 1, 1);\r\n  let newIndex = 1;\r\n  toModify.forEach((element) => {\r\n    element.index = newIndex;\r\n    newIndex += 1;\r\n  });\r\n\r\n  const toStorage = JSON.stringify(toModify);\r\n  localStorage.setItem('tasks', toStorage);\r\n  const trashCans = document.querySelectorAll('.trash-can');\r\n  trashCans.forEach((can) => {\r\n    can.parentElement.remove();\r\n  });\r\n});\r\n\n\n//# sourceURL=webpack://to-do-list/./src/remove.js?");
-
-/***/ }),
-
-/***/ "./src/removeTrash.js":
+/***/ "./src/modules/add.js":
 /*!****************************!*\
-  !*** ./src/removeTrash.js ***!
+  !*** ./src/modules/add.js ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./remove.js */ \"./src/remove.js\");\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\r\n  const trash = document.querySelector('.trash-can');\r\n  trash.onclick = () => {\r\n    (0,_remove_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(trash.previousSibling.value);\r\n  };\r\n});\r\n\n\n//# sourceURL=webpack://to-do-list/./src/removeTrash.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addTask)\n/* harmony export */ });\nfunction Task(description) {\r\n  this.description = description;\r\n  this.completed = false;\r\n}\r\n\r\nfunction addTask(description) {\r\n  const newTask = new Task(description);\r\n  const tasks = JSON.parse(localStorage.getItem('tasks'));\r\n  tasks.push(newTask);\r\n  let index = 1;\r\n  tasks.forEach((item) => {\r\n    item.index = index;\r\n    index += 1;\r\n  });\r\n  const toStore = JSON.stringify(tasks);\r\n  localStorage.setItem('tasks', toStore);\r\n}\r\n\n\n//# sourceURL=webpack://to-do-list/./src/modules/add.js?");
+
+/***/ }),
+
+/***/ "./src/modules/check.js":
+/*!******************************!*\
+  !*** ./src/modules/check.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction changeStatus(description, status) {\n  const tasks = JSON.parse(localStorage.getItem('tasks'));\n  tasks.forEach((task) => {\n    if (task.description === description) {\n      task.completed = status;\n    }\n  });\n  const toStore = JSON.stringify(tasks);\n  localStorage.setItem('tasks', toStore);\n}\n\nfunction checkTrue() {\n  const checkboxs = document.querySelectorAll('.checkbox');\n  checkboxs.forEach((box) => {\n    if (box.nextElementSibling.style.textDecoration === 'line-through') {\n      box.checked = true;\n    }\n  });\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  const checkboxs = document.querySelectorAll('.checkbox');\n  checkboxs.forEach((checkbox) => {\n    checkbox.addEventListener('click', () => {\n      const check = checkbox.checked;\n      if (check === true) {\n        checkbox.nextSibling.style.textDecoration = 'line-through';\n        changeStatus(checkbox.nextSibling.value, check);\n      } else {\n        checkbox.nextSibling.style.textDecoration = 'none';\n        changeStatus(checkbox.nextSibling.value, check);\n      }\n    });\n  });\n  checkTrue();\n});\n\n\n//# sourceURL=webpack://to-do-list/./src/modules/check.js?");
+
+/***/ }),
+
+/***/ "./src/modules/clearAllCompleted.js":
+/*!******************************************!*\
+  !*** ./src/modules/clearAllCompleted.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./remove.js */ \"./src/modules/remove.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  const checkboxs = document.querySelectorAll('.checkbox');\n  const arr = Array.from(checkboxs);\n  const checkboxCheck = arr.filter((check) => check.checked === true);\n  checkboxCheck.forEach((cheked) => {\n    (0,_remove_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(cheked.nextSibling.value);\n    cheked.parentElement.remove();\n  });\n});\n\n//# sourceURL=webpack://to-do-list/./src/modules/clearAllCompleted.js?");
+
+/***/ }),
+
+/***/ "./src/modules/dragging.js":
+/*!*********************************!*\
+  !*** ./src/modules/dragging.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ dragging)\n/* harmony export */ });\nfunction NewObject(description, completed, index) {\r\n  this.description = description;\r\n  this.completed = completed;\r\n  this.index = index;\r\n}\r\nfunction refresh() {\r\n  const tasks = document.querySelectorAll('.task-item');\r\n  const newData = [];\r\n  let index = 1;\r\n\r\n  tasks.forEach((task) => {\r\n    const orderTask = new NewObject(task.childNodes[1].value, task.childNodes[0].checked, index);\r\n    newData.push(orderTask);\r\n    index += 1;\r\n  });\r\n  localStorage.setItem('tasks', (JSON.stringify(newData)));\r\n}\r\n\r\nfunction dragging(node) {\r\n  const holder = document.querySelector('.ul-to-do');\r\n  const listItems = document.querySelectorAll('.task-item');\r\n  node.draggable = true;\r\n  node.addEventListener('dragstart', () => {\r\n    node.style.backgroundColor = '#777';\r\n    node.childNodes[1].style.backgroundColor = '#777';\r\n  });\r\n  node.addEventListener('dragend', () => {\r\n    node = undefined;\r\n    return 0;\r\n  });\r\n\r\n  holder.addEventListener('dragover', (e) => {\r\n    if (node === undefined) {\r\n      return;\r\n    }\r\n    e.preventDefault();\r\n    node.style.backgroundColor = '#777';\r\n    node.childNodes[1].style.backgroundColor = '#777';\r\n    const mouse = e.clientY;\r\n    const positions = [];\r\n    listItems.forEach((element) => {\r\n      positions.push(element.getBoundingClientRect().y);\r\n    });\r\n    const where = positions.findIndex((item) => item > mouse);\r\n    const nodeToinsertBefore = listItems[where];\r\n    if (nodeToinsertBefore === undefined) {\r\n      holder.appendChild(node);\r\n    } else {\r\n      holder.insertBefore(node, nodeToinsertBefore);\r\n    }\r\n  });\r\n\r\n  holder.addEventListener('drop', (e) => {\r\n    e.preventDefault();\r\n    e.stopPropagation();\r\n    node = undefined;\r\n    refresh();\r\n  });\r\n}\n\n//# sourceURL=webpack://to-do-list/./src/modules/dragging.js?");
+
+/***/ }),
+
+/***/ "./src/modules/editTask.js":
+/*!*********************************!*\
+  !*** ./src/modules/editTask.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((description, newDescription) => {\n  const toModify = JSON.parse(localStorage.getItem('tasks'));\n  toModify.forEach((element) => {\n    if (element.description === description) {\n      element.description = newDescription;\n    }\n  });\n  const toStorage = JSON.stringify(toModify);\n  localStorage.setItem('tasks', toStorage);\n});\n\n//# sourceURL=webpack://to-do-list/./src/modules/editTask.js?");
+
+/***/ }),
+
+/***/ "./src/modules/remove.js":
+/*!*******************************!*\
+  !*** ./src/modules/remove.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((description) => {\n  const toModify = JSON.parse(localStorage.getItem('tasks'));\n  let ind;\n  toModify.forEach((element) => {\n    if (element.description === description) {\n      ind = element.index;\n    }\n  });\n  toModify.splice(ind - 1, 1);\n  let newIndex = 1;\n  toModify.forEach((element) => {\n    element.index = newIndex;\n    newIndex += 1;\n  });\n\n  const toStorage = JSON.stringify(toModify);\n  localStorage.setItem('tasks', toStorage);\n  const trashCans = document.querySelectorAll('.trash-can');\n  trashCans.forEach((can) => {\n    can.parentElement.remove();\n  });\n});\n\n\n//# sourceURL=webpack://to-do-list/./src/modules/remove.js?");
+
+/***/ }),
+
+/***/ "./src/modules/removeTrash.js":
+/*!************************************!*\
+  !*** ./src/modules/removeTrash.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _remove_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./remove.js */ \"./src/modules/remove.js\");\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  const trash = document.querySelector('.trash-can');\n  trash.onclick = () => {\n    (0,_remove_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(trash.previousSibling.value);\n  };\n});\n\n\n//# sourceURL=webpack://to-do-list/./src/modules/removeTrash.js?");
 
 /***/ }),
 
