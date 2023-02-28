@@ -20,16 +20,12 @@ export default function dragging(node) {
   const holder = document.querySelector('.ul-to-do');
   const listItems = document.querySelectorAll('.task-item');
   node.draggable = true;
-  node.addEventListener('dragstart', () => {
-    if (node === undefined) {
-      return;
-    }
-    node.style.backgroundColor = '#777';
-    node.childNodes[1].style.backgroundColor = '#777';
-  });
   node.addEventListener('dragend', () => {
+    listItems.forEach((item) => {
+      item.classList.remove('bg-gray');
+      item.childNodes[1].classList.remove('bg-gray');
+    });
     node = undefined;
-    return 0;
   });
 
   holder.addEventListener('dragover', (e) => {
@@ -37,14 +33,15 @@ export default function dragging(node) {
       return;
     }
     e.preventDefault();
-    node.style.backgroundColor = '#777';
-    node.childNodes[1].style.backgroundColor = '#777';
+    node.classList.add('bg-gray');
+    node.childNodes[1].classList.add('bg-gray');
     const mouse = e.clientY;
     const positions = [];
+    let where;
     listItems.forEach((element) => {
       positions.push(element.getBoundingClientRect().y);
+      where = positions.findIndex((item) => item > mouse);
     });
-    const where = positions.findIndex((item) => item > mouse);
     const nodeToinsertBefore = listItems[where];
     if (nodeToinsertBefore === undefined) {
       holder.appendChild(node);
@@ -56,7 +53,6 @@ export default function dragging(node) {
   holder.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    node = undefined;
     refresh();
   });
 }

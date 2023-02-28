@@ -127,6 +127,19 @@ body {
   box-shadow: 0 0 7px black;
 }
 
+.bg-yellow {
+  background: rgb(240, 233, 166);
+}
+
+.bg-gray {
+  background-color: rgba(150, 144, 144, 0.8);
+}
+
+.text-li:focus,
+.task-text:focus {
+  outline: none;
+}
+
 @media screen and (max-width: 768px) {
   .refresh {
     left: 3%;

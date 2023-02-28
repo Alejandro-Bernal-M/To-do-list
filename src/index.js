@@ -19,6 +19,7 @@ const buttonClear = document.querySelector('.btn-holder');
 refreshIcon.src = refresh;
 enterIcon.src = enter;
 
+// this function changes the background color to yellow when the user is on the input
 function changeIcon() {
   const tasksItems = document.querySelectorAll('.task-item');
   const taskText = document.querySelectorAll('.task-text');
@@ -26,8 +27,8 @@ function changeIcon() {
     task.addEventListener('click', () => {
       task.nextSibling.src = trash;
       task.nextSibling.classList.add('trash-can');
-      task.style.backgroundColor = 'rgb(240, 233, 166)';
-      task.parentNode.style.backgroundColor = 'rgb(240, 233, 166)';
+      task.classList.add('bg-yellow');
+      task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
     const currentValue = task.value;
@@ -39,12 +40,12 @@ function changeIcon() {
     item.addEventListener('mouseleave', () => {
       item.lastChild.src = dots;
       item.lastChild.classList.remove('trash-can');
-      item.style.backgroundColor = '#fff';
-      item.childNodes[1].style.backgroundColor = '#fff';
+      item.classList.remove('bg-yellow');
+      item.childNodes[1].classList.remove('bg-yellow');
     });
   });
 }
-
+// this function build the list with the task items
 function listConstructor() {
   if (localStorage.getItem('tasks') === '' || localStorage.getItem('tasks') === null) {
     localStorage.setItem('tasks', '[]');
@@ -76,8 +77,7 @@ function listConstructor() {
   });
 }
 
-listConstructor();
-
+// this function deletes the task list
 function deletePrevious() {
   const children = holder.childNodes;
   const counter = children.length;
@@ -99,6 +99,7 @@ window.onload = () => {
   if (localStorage.getItem('tasks') === null) {
     localStorage.setItem('tasks', '[]');
   }
+  listConstructor();
 };
 
 buttonClear.onclick = () => {
