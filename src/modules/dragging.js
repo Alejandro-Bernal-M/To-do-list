@@ -21,6 +21,9 @@ export default function dragging(node) {
   const listItems = document.querySelectorAll('.task-item');
   node.draggable = true;
   node.addEventListener('dragstart', () => {
+    if (node === undefined) {
+      return;
+    }
     node.style.backgroundColor = '#777';
     node.childNodes[1].style.backgroundColor = '#777';
   });
