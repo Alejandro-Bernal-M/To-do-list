@@ -15,4 +15,12 @@ describe('Remove test', () => {
     remove('task1');
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([]);
   });
+
+  test('Should remove element from DOM', () => {
+    document.body.innerHTML = `<div> 
+    <ul class="ul-to-do"><li><input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" value ="task1"><img  class="trash-can"></li></ul>' 
+    </div>`;
+    remove('task1');
+    expect(document.querySelector('.ul-to-do').childNodes.length).toEqual(0);
+  });
 });
