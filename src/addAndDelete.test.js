@@ -14,5 +14,5 @@ describe('Remove test', () => {
     localStorage.setItem('tasks', JSON.stringify([{ completed: false, description: 'task1', index: 1 }]));
     remove('task1');
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([]);
-  })
-})
+  });
+});
