@@ -1,6 +1,7 @@
 import add from './modules/add.js';
 import remove from './modules/remove.js';
 import editTask from './modules/editTask.js';
+import check from './modules/check.js';
 
 describe('Add test', () => {
   test('should save to localStorage', () => {
@@ -31,5 +32,18 @@ describe('edit task', () => {
     localStorage.setItem('tasks', JSON.stringify([{ completed: false, description: 'task1', index: 1 }]));
     editTask('task1', 'newTask');
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([{ completed: false, description: 'newTask', index: 1 }]);
+  });
+});
+
+describe('change on status', () => {
+  test('should change the status', () => {
+    document.body.innerHTML = `<div> 
+    <ul class="ul-to-do"><li><input type="checkbox" class="checkbox" ><input type="text" class="li-description task-text" value ="task1"><img  class="trash-can"></li></ul>' 
+    </div>`;
+    localStorage.setItem('tasks', JSON.stringify([{ completed: false, description: 'task1', index: 1 }]));
+    const click = document.querySelector('.checkbox');
+    check();
+    click.click();
+    expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([{ completed: true, description: 'task1', index: 1 }]);
   });
 });
