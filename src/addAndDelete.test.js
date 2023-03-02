@@ -2,6 +2,7 @@ import add from './modules/add.js';
 import remove from './modules/remove.js';
 import editTask from './modules/editTask.js';
 import check from './modules/check.js';
+import clearAllCompleted from './modules/clearAllCompleted.js';
 
 describe('Add test', () => {
   test('should save to localStorage', () => {
@@ -45,5 +46,13 @@ describe('change on status', () => {
     check();
     click.click();
     expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([{ completed: true, description: 'task1', index: 1 }]);
+  });
+});
+
+describe('remove completed tasks', () => {
+  test('should remove all completed tasks', () => {
+    localStorage.setItem('tasks', JSON.stringify([{ completed: true, description: 'task1', index: 1 }]));
+    clearAllCompleted();
+    expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([]);
   });
 });
