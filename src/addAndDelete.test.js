@@ -1,5 +1,6 @@
 import add from './modules/add.js';
 import remove from './modules/remove.js';
+import editTask from './modules/editTask.js';
 
 describe('Add test', () => {
   test('should save to localStorage', () => {
@@ -22,5 +23,13 @@ describe('Remove test', () => {
     </div>`;
     remove('task1');
     expect(document.querySelector('.ul-to-do').childNodes.length).toEqual(0);
+  });
+});
+
+describe('edit task', () => {
+  test('should edit the content', () => {
+    localStorage.setItem('tasks', JSON.stringify([{ completed: false, description: 'task1', index: 1 }]));
+    editTask('task1', 'newTask');
+    expect(JSON.parse(localStorage.getItem('tasks'))).toEqual([{ completed: false, description: 'newTask', index: 1 }]);
   });
 });
