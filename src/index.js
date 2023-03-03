@@ -60,7 +60,7 @@ function listConstructor() {
     if (item.completed === true) {
       compOrNot = 'line-through';
     }
-    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
+    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" id="${item.index}"class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
     holder.appendChild(newLi);
   });
 
