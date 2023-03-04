@@ -1,3 +1,5 @@
+import refreshId from './refreshId.js';
+
 function NewObject(description, completed, index) {
   this.description = description;
   this.completed = completed;
@@ -7,7 +9,7 @@ function refresh() {
   const tasks = document.querySelectorAll('.task-item');
   const newData = [];
   let index = 1;
-
+  refreshId();
   tasks.forEach((task) => {
     const orderTask = new NewObject(task.childNodes[1].value, task.childNodes[0].checked, index);
     newData.push(orderTask);
@@ -25,6 +27,7 @@ export default function dragging(node) {
       item.classList.remove('bg-gray');
       item.childNodes[1].classList.remove('bg-gray');
     });
+    refresh();
     node = undefined;
   });
 
@@ -53,6 +56,5 @@ export default function dragging(node) {
   holder.addEventListener('drop', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    refresh();
   });
 }
