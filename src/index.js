@@ -31,9 +31,9 @@ function changeIcon() {
       task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
-    const currentValue = task.value;
+    const currentId = task.id;
     task.addEventListener('change', () => {
-      editTask(currentValue, task.value);
+      editTask(currentId, task.value);
     });
   });
   tasksItems.forEach((item) => {
