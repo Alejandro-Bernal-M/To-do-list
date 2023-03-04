@@ -31,9 +31,9 @@ function changeIcon() {
       task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
-    const currentValue = task.value;
+    const currentId = task.id;
     task.addEventListener('change', () => {
-      editTask(currentValue, task.value);
+      editTask(currentId, task.value);
     });
   });
   tasksItems.forEach((item) => {
@@ -60,7 +60,7 @@ function listConstructor() {
     if (item.completed === true) {
       compOrNot = 'line-through';
     }
-    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
+    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" id="${item.index}"class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
     holder.appendChild(newLi);
   });
 

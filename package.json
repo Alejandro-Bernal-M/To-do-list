@@ -22,6 +22,7 @@
   "homepage": "https://Alejandro-Bernal-M.github.io/To-do-list",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "fs": "^0.0.1-security",
     "gh-pages": "^5.0.0",

@@ -1,7 +1,7 @@
-function changeStatus(description, status) {
+function changeStatus(id, status) {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
   tasks.forEach((task) => {
-    if (task.description === description) {
+    if (task.index === +id) {
       task.completed = status;
     }
   });
@@ -25,10 +25,10 @@ export default () => {
       const check = checkbox.checked;
       if (check === true) {
         checkbox.nextSibling.style.textDecoration = 'line-through';
-        changeStatus(checkbox.nextSibling.value, check);
+        changeStatus(checkbox.nextSibling.id, check);
       } else {
         checkbox.nextSibling.style.textDecoration = 'none';
-        changeStatus(checkbox.nextSibling.value, check);
+        changeStatus(checkbox.nextSibling.id, check);
       }
     });
   });
