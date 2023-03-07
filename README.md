@@ -92,7 +92,7 @@ git clone https://github.com/Alejandro-Bernal-M/To-do-list.git
 
 ### Install
 
-You need to instal webpack 
+npm install
 
 ### Usage
 
@@ -101,7 +101,7 @@ npm start to go to live server and see the to do list
 
 ### Run tests
 
-npm start to go to live server
+npm test. Tested with [Jest](https://jestjs.io/)
 
 
 ### Deployment
@@ -127,7 +127,7 @@ npm start to go to live server
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [ ] **[Functionality]**
-- [ ] **[Dragable]**
+- [ ] **[Dragable on mobile]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
