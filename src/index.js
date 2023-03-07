@@ -31,13 +31,13 @@ function changeIcon() {
       task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
-    const currentId = task.id;
-    task.addEventListener('change', () => {
+    task.addEventListener('input', () => {
+      const currentId = task.id;
       editTask(currentId, task.value);
     });
   });
   tasksItems.forEach((item) => {
-    item.addEventListener('mouseleave', () => {
+    item.addEventListener('focusout', () => {
       item.lastChild.src = dots;
       item.lastChild.classList.remove('trash-can');
       item.classList.remove('bg-yellow');
@@ -64,7 +64,6 @@ function listConstructor() {
     holder.appendChild(newLi);
   });
 
-  changeIcon();
   check();
   const icons = document.querySelectorAll('.icon');
   icons.forEach((icon) => {
@@ -75,6 +74,7 @@ function listConstructor() {
       }
     });
   });
+  changeIcon();
 }
 
 // this function deletes the task list
