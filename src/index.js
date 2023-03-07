@@ -31,14 +31,13 @@ function changeIcon() {
       task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
-    task.addEventListener('keypress', () => {
+    task.addEventListener('input', () => {
       const currentId = task.id;
-      console.log(currentId)
       editTask(currentId, task.value);
     });
   });
   tasksItems.forEach((item) => {
-    item.addEventListener('mouseleave', () => {
+    item.addEventListener('focusout', () => {
       item.lastChild.src = dots;
       item.lastChild.classList.remove('trash-can');
       item.classList.remove('bg-yellow');
