@@ -31,8 +31,9 @@ function changeIcon() {
       task.parentNode.classList.add('bg-yellow');
       removeTrash();
     });
-    const currentId = task.id;
-    task.addEventListener('change', () => {
+    task.addEventListener('keypress', () => {
+      const currentId = task.id;
+      console.log(currentId)
       editTask(currentId, task.value);
     });
   });
@@ -64,7 +65,6 @@ function listConstructor() {
     holder.appendChild(newLi);
   });
 
-  changeIcon();
   check();
   const icons = document.querySelectorAll('.icon');
   icons.forEach((icon) => {
@@ -75,6 +75,7 @@ function listConstructor() {
       }
     });
   });
+  changeIcon();
 }
 
 // this function deletes the task list
