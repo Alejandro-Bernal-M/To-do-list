@@ -5,8 +5,7 @@ export default () => {
   const checkboxs = document.querySelectorAll('.checkbox');
   checkboxs.forEach((checked) => {
     if (checked.checked === true) {
-      remove(checked.nextSibling.id);
-      checked.parentElement.remove();
+      remove(checked.nextSibling.id, checked);
     }
     refreshId();
   });
