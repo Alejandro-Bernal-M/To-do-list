@@ -9,6 +9,7 @@ import editTask from './modules/editTask.js';
 import check from './modules/check.js';
 import clearAllCompleted from './modules/clearAllCompleted.js';
 import dragging from './modules/dragging.js';
+import dragMobile from './modules/dragMobile.js';
 
 const inputAdd = document.getElementById('add-text');
 const refreshIcon = document.querySelector('.refresh');
@@ -60,7 +61,7 @@ function listConstructor() {
     if (item.completed === true) {
       compOrNot = 'line-through';
     }
-    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" id="${item.index}"class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
+    newLi.innerHTML = `<input type="checkbox"  class="checkbox"><input type="text" id="${item.index}" class="li-description task-text" style="text-decoration: ${compOrNot}" value ="${item.description}"><img src="${dots}" class="icon">`;
     holder.appendChild(newLi);
   });
 
@@ -71,6 +72,14 @@ function listConstructor() {
       icon.draggable = false;
       if (icon.classList.contains('trash-can') === false) {
         dragging(icon.parentNode);
+      }
+    });
+  });
+  icons.forEach((icon) => {
+    icon.addEventListener('touchstart', () => {
+      icon.draggable = false;
+      if (icon.classList.contains('trash-can') === false) {
+        dragMobile(icon.parentNode);
       }
     });
   });
